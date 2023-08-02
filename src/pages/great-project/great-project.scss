@@ -1,0 +1,16 @@
+.greate-project {
+  display: grid;
+  grid-template-columns: minmax(0, 360px) 3fr;
+
+  &__header {
+    grid-column: 2/3;
+  }
+  &__chat-item-list {
+    grid-column: 1/2;
+    grid-row: 1/-1;
+  }
+  &__chat-window {
+    grid-column: 2/3;
+    background: orangered;
+  }
+}

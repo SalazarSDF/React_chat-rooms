@@ -13,9 +13,14 @@
     grid-row: 1/-1;
     height: 100vh;
     overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      /* height: 16px; */
+    }
   }
   &ChatWindow {
     grid-column: 2/3;
-    background: orangered;
+    background: white;
   }
 }

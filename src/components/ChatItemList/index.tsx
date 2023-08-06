@@ -8,7 +8,6 @@ import { Header } from "../Header";
 import styles from "./chat-item-list.module.scss";
 import { ChatItem } from "../ChatItem";
 
-
 export const ChatItemList = () => {
   const chats = useSelector(getAllChats);
   const chatsStatus = useSelector(getChatsStatus);

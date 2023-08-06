@@ -1,4 +1,5 @@
 import { Header } from "../../components/Header";
+import { Message } from "../../components/Message";
 import { Provider } from "react-redux";
 import { store } from "../../store";
 import { fetchChats } from "./features/chats-slice";
@@ -16,7 +17,9 @@ export default function GreatProject({ title }: { title: string }) {
         <div className={style.greateProjectChatItemList}>
           <ChatItemList />
         </div>
-        <div className={style.greateProjectChatWindow}></div>
+        <div className={style.greateProjectChatWindow}>
+          <Message/>
+        </div>
       </div>
     </Provider>
   );

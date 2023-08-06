@@ -1,6 +1,9 @@
 :root {
-  --text-color-base: #000000;
+  --text-color-base: #201f1e;
   --text-color-second: #605e5c;
+  --selected-color: rgba(64, 126, 201, 0.08);
+  --hover-color: rgba(32, 31, 30, 0.04);
+
   --default-font: "Lato", sans-serif;
 }
 

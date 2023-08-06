@@ -9,3 +9,10 @@ export const getChatList = () => {
   });
 };
 
+export const getMessageList = (chatId: string) => {
+  return wrapper({
+    method: "get",
+    url: `${URLS.MESSAGES}chat_id=${chatId}&offset=0&limit=20`,
+    headers: { version: "0.0" },
+  });
+};

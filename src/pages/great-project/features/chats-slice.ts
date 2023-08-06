@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { getChatList } from "../../../api/chat";
 
 export type TChat = {
@@ -30,12 +30,15 @@ type TChatsInitalState = {
   status: "idle" | "loading" | "succeeded" | "failed";
   response: TChat[];
   error: null;
+  activeMessageId: null | string;
 };
 
 const initialState: TChatsInitalState = {
   status: "idle",
   response: [],
   error: null,
+
+  activeMessageId: null,
 };
 
 export const fetchChats = createAsyncThunk("chats/fetchChats", async () => {
@@ -55,7 +58,12 @@ export const fetchChats = createAsyncThunk("chats/fetchChats", async () => {
 const chatsSlice = createSlice({
   name: "chats",
   initialState,
-  reducers: {},
+  reducers: {
+    setActiveMessage(state, action: PayloadAction<{ messageId: string }>) {
+      const { messageId } = action.payload;
+      state.activeMessageId = messageId;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchChats.pending, (state) => {
@@ -64,6 +72,10 @@ const chatsSlice = createSlice({
       .addCase(fetchChats.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.response = action.payload;
+        if (state.activeMessageId === null) {
+          const firstChatId = action.payload[0].id;
+          state.activeMessageId = firstChatId;
+        }
       })
       .addCase(fetchChats.rejected, (state) => {
         state.status = "failed";
@@ -72,9 +84,14 @@ const chatsSlice = createSlice({
 });
 export default chatsSlice;
 
+export const { setActiveMessage } = chatsSlice.actions;
+
 export const getAllChats = ({ chats }: { chats: TChatsInitalState }) => {
   return chats.response;
 };
 
 export const getChatsStatus = ({ chats }: { chats: TChatsInitalState }) =>
   chats.status;
+
+export const getActiveMessageId = ({ chats }: { chats: TChatsInitalState }) =>
+  chats.activeMessageId;

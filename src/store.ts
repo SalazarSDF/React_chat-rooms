@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import chatsSlice from "./pages/great-project/features/chats-slice";
 import { useDispatch } from "react-redux";
-import messageSlice from "./pages/great-project/features/message-slice";
+import messagesSlice from "./pages/great-project/features/messages-slice";
 
 export const store = configureStore({
   reducer: {
     chats: chatsSlice.reducer,
-    message: messageSlice.reducer
+    messages: messagesSlice.reducer,
   },
 });
 

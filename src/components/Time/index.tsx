@@ -1,5 +1,6 @@
 import { ITime } from "./interface";
 import "./time.scss";
+import { ReactComponent as Galochki } from "../../assets/my_message.svg";
 export const Time = ({ my = false, date }: ITime) => {
   const time = new Date(date).toLocaleTimeString("ru", {
     hour: "2-digit",
@@ -8,6 +9,7 @@ export const Time = ({ my = false, date }: ITime) => {
   return (
     <div className="time">
       <time>{time}</time>
+      {my ?? <Galochki />}
     </div>
   );
 };

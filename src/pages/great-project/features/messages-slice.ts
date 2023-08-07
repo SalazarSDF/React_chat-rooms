@@ -15,20 +15,20 @@ export type TMessage = {
   is_new: boolean;
 };
 
-export type TMessageInitialState = {
+export type TMessagesInitialState = {
   status: "idle" | "loading" | "succeeded" | "failed";
   response: TMessage[];
   error: null;
 };
 
-const initialState: TMessageInitialState = {
+const initialState: TMessagesInitialState = {
   status: "idle",
   response: [],
   error: null,
 };
 
-export const fetchMessage = createAsyncThunk(
-  "message/fetchMessage",
+export const fetchMessages = createAsyncThunk(
+  "message/fetchMessages",
   async (chatId: string) => {
     try {
       const {response}= await getMessageList(chatId);
@@ -44,28 +44,32 @@ export const fetchMessage = createAsyncThunk(
   }
 );
 
-const messageSlice = createSlice({
-  name: "message",
+const messagesSlice = createSlice({
+  name: "messages",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchMessage.pending, (state) => {
+      .addCase(fetchMessages.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(fetchMessage.fulfilled, (state, action) => {
+      .addCase(fetchMessages.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.response = action.payload;
       })
-      .addCase(fetchMessage.rejected, (state) => {
+      .addCase(fetchMessages.rejected, (state) => {
         state.status = "failed";
       });
   },
 });
-export default messageSlice;
+export default messagesSlice;
 
-export const getMessageStatus = ({
-  message,
+export const getMessagesStatus = ({
+  messages,
 }: {
-  message: TMessageInitialState;
-}) => message.status;
+  messages: TMessagesInitialState;
+}) => messages.status;
+
+export const getMessages = ({ messages }: { messages: TMessagesInitialState }) => {
+  return messages.response
+};

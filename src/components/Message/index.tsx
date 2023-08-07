@@ -1,26 +1,12 @@
-import { getActiveMessageId } from "../../pages/great-project/features/chats-slice";
-import { useSelector } from "react-redux";
-import {
-  fetchMessage,
-  getMessageStatus,
-} from "../../pages/great-project/features/message-slice";
-import { useAppDispatch } from "../../store";
-import { Spinner } from "../Spiner";
-import { useEffect } from "react";
-export const Message = () => {
-  const dispatch = useAppDispatch();
-  const activeMessageId = useSelector(getActiveMessageId);
-  const messageStatus = useSelector(getMessageStatus);
-
-  useEffect(() => {
-    if (messageStatus === "idle" && activeMessageId) {
-      dispatch(fetchMessage(activeMessageId));
-    }
-  }, [activeMessageId, dispatch, messageStatus]);
-
-  if (messageStatus === "loading") {
-    return <Spinner />;
-  }
-
-  return <h1>Its message here</h1>;
+import { Avatar } from "../Avatar";
+import { IMessage } from "./interface";
+import { Time } from "../Time";
+export const Message = ({ message }: IMessage) => {
+  return (
+    <>
+      <Avatar src={message.user.avatar} />
+      <span>{message.message}</span>
+      <Time date={message.created_at} my={message.user.you} />
+    </>
+  );
 };

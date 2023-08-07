@@ -3,9 +3,9 @@ import { Avatar } from "../Avatar";
 import { Time } from "../Time";
 import styles from "./chat-item.module.scss";
 
-export const ChatItem = ({ item }: IChatItem) => {
+export const ChatItem = ({ item, selected }: IChatItem) => {
   return (
-    <li className={`${styles.chatItem}`}>
+    <li className={`${styles.chatItem} ${selected ? styles.selected : ""}`}>
       <div className={styles.chatItemAvatar}>
         <Avatar size="md" src={item.avatar} />
       </div>

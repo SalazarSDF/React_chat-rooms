@@ -1,0 +1,28 @@
+.systemMessageDate {
+  padding: 0.5rem 0.75rem;
+  background: var(--selected-color);
+  &Value {
+    color: var(--text-color-base);
+    text-align: right;
+    font-family: var(--default-font);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem; /* 133.333% */
+  }
+}
+
+.systemMessageText {
+  padding: 4px 12px;
+  background: var(j-selected-color);
+  &Value {
+    min-width: 15.5rem;
+    color: var(--system-message-color);
+    text-align: center;
+    font-family: var(--default-font);
+    font-size: 0.75rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1rem; /* 133.333% */
+  }
+}

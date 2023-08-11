@@ -3,7 +3,9 @@
   --text-color-second: #605e5c;
   --selected-color: rgba(64, 126, 201, 0.08);
   --hover-color: rgba(32, 31, 30, 0.04);
-
+  --my-messsage-background-color: rgba(64, 126, 201, 0.16);
+  --message-background-color: #f3f3f3;
+  --system-message-color: #407EC9;
   --default-font: "Lato", sans-serif;
 }
 

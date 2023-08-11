@@ -31,7 +31,7 @@ export const fetchMessages = createAsyncThunk(
   "message/fetchMessages",
   async (chatId: string) => {
     try {
-      const {response}= await getMessageList(chatId);
+      const { response } = await getMessageList(chatId);
       if (response) {
         const chats: TMessage[] = response;
         return chats;
@@ -55,7 +55,7 @@ const messagesSlice = createSlice({
       })
       .addCase(fetchMessages.fulfilled, (state, action) => {
         state.status = "succeeded";
-        state.response = action.payload;
+        state.response = action.payload.reverse();
       })
       .addCase(fetchMessages.rejected, (state) => {
         state.status = "failed";
@@ -70,6 +70,10 @@ export const getMessagesStatus = ({
   messages: TMessagesInitialState;
 }) => messages.status;
 
-export const getMessages = ({ messages }: { messages: TMessagesInitialState }) => {
-  return messages.response
+export const getMessages = ({
+  messages,
+}: {
+  messages: TMessagesInitialState;
+}) => {
+  return messages.response;
 };

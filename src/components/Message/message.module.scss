@@ -1,0 +1,33 @@
+.message {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(min-content, 36.75rem);
+  &TextContainer {
+    grid-column: 2/3;
+    display: flex;
+    padding: 0.5rem 0.75rem;
+    background: var(--message-background-color);
+    border-radius: 4px;
+    &.myMessage {
+      background: var(--my-messsage-background-color);
+    }
+  }
+  &Text {
+    color: var(--text-color-base);
+    font-family: var(--default-font);
+    font-size: 0.938rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25rem;
+  }
+  &TimeContainer {
+    align-self: end;
+  }
+  &UserName {
+    color: var(--text-color-base);
+    font-family: var(--default-font);
+    font-size: 0.938rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.25rem; /* 133.333% */
+  }
+}

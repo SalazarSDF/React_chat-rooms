@@ -8,7 +8,7 @@ export type TChat = {
   avatar: string;
   private: boolean;
   last_message: {
-    created_at: 0;
+    created_at: number;
     user_id: string;
     user_name: string;
     user_surname: string;

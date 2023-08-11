@@ -45,6 +45,6 @@
     -webkit-box-orient: vertical;
   }
   &.selected {
-    background: blue;
+    background: var(--selected-color);
   }
 }

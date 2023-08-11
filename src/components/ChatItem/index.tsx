@@ -2,10 +2,20 @@ import { IChatItem } from "./interface";
 import { Avatar } from "../Avatar";
 import { Time } from "../Time";
 import styles from "./chat-item.module.scss";
+import { setActiveMessage } from "../../pages/great-project/features/chats-slice";
+import { useAppDispatch } from "../../store";
+import { fetchMessages } from "../../pages/great-project/features/messages-slice";
 
 export const ChatItem = ({ item, selected }: IChatItem) => {
+  const dispatch = useAppDispatch();
   return (
-    <li className={`${styles.chatItem} ${selected ? styles.selected : ""}`}>
+    <li
+      onClick={() => {
+        dispatch(setActiveMessage({ messageId: item.id }));
+        dispatch(fetchMessages(item.id));
+      }}
+      className={`${styles.chatItem} ${selected ? styles.selected : ""}`}
+    >
       <div className={styles.chatItemAvatar}>
         <Avatar size="md" src={item.avatar} />
       </div>

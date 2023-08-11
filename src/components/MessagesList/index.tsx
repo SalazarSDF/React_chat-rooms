@@ -18,6 +18,7 @@ export const MessagesList = () => {
   const messagesStatus = useSelector(getMessagesStatus);
   const messages = useSelector(getMessages);
   const newMessagesRef = useRef<HTMLParagraphElement>(null);
+  //const activeMessageIdRef = useRef<string>(activeMessageId);
 
   useEffect(() => {
     if (messagesStatus === "idle" && activeMessageId) {

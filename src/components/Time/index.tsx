@@ -9,7 +9,7 @@ export const Time = ({ my = false, date }: ITime) => {
   return (
     <div className="time">
       <time>{time}</time>
-      {my ?? <Galochki />}
+      {my && <Galochki />}
     </div>
   );
 };

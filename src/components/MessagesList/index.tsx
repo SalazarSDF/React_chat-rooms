@@ -11,6 +11,7 @@ import { Fragment, useEffect, useRef } from "react";
 import { Message } from "../Message";
 import styles from "./messages-list.module.scss";
 import { SystemMessage } from "../SystemMessage";
+import { Input } from "../Input";
 
 export const MessagesList = () => {
   const dispatch = useAppDispatch();
@@ -82,6 +83,9 @@ export const MessagesList = () => {
               </Fragment>
             );
           })}
+          <div className={styles.chatWindowInput}>
+            <Input />
+          </div>
         </div>
       )}
     </Fragment>
